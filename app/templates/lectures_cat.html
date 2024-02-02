@@ -1,0 +1,68 @@
+{% extends 'index.html'%}
+{% block content %}
+{% load static %}
+<style>
+    /* Existing styles... */
+
+    #cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 69px;
+    }
+
+    .card {
+        width: 30%; /* Adjust the width as needed */
+        margin: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .card-text {
+        padding: 15px;
+    }
+
+    .card-text h3 {
+        margin-bottom: 10px;
+        color: #333; /* Customize the heading color */
+    }
+
+    .card-text p {
+        color: #666; /* Customize the description color */
+    }
+
+    /* Existing styles... */
+</style>
+<h2 style="margin: 31px;">Choose your category</h2>
+
+
+<section id="cards">
+
+    
+{% for data in detailss %}
+    <div class="card">
+        <img src="/{{data.catogory_photo}}" alt="Card 1 Image">
+        <div class="card-text">
+            <h3>{{data.catogory_name}}</h3>
+            <p>{{data.catogory_discription}}</p>
+            <a href="get_video/{{data.id}}"><button class="btn btn-primary">show</button></a>
+        </div>
+    </div>
+{%endfor%}
+
+
+    <!-- Repeat similar blocks for Cards 3 to 6 -->
+
+</section>
+
+
+
+{% endblock content %}

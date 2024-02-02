@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<style>
+    .video-container {
+        display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100%;
+    padding: 38px;
+    box-sizing: border-box;
+    padding-left: 100px;
+    padding-right: 246px;
+   
+    }
+
+    video {
+        width: 600px; /* Set a medium width for the video */
+        height: auto; /* Automatically adjust the height based on the aspect ratio */
+        border-radius: 10px; /* Add border-radius for a stylish look */
+        margin-right: 20px; /* Add some margin to separate video and description */
+    }
+
+    .description-container {
+        box-sizing: border-box;
+        padding: 20px;
+        width: calc(100% - 340px); /* Adjust width to make room for video and margin */
+        max-width: 400px;
+        background-color: #f4f4f4;
+        border-radius: 10px; /* Add border-radius for a stylish look */
+    }
+
+    @media only screen and (max-width: 600px) {
+        .video-container {
+            flex-direction: column; /* Stack elements vertically on smaller screens */
+        }
+
+        video {
+            width: 100%; /* Make the video take full width on smaller screens */
+            margin-right: 0; /* Remove margin on smaller screens */
+            margin-bottom: 20px; /* Add margin at the bottom for separation on smaller screens */
+        }
+
+        .description-container {
+            width: 100%; /* Make the description take full width on smaller screens */
+        }
+    }
+</style>
+
+<div class="video-container">
+    <video controls>
+        <source src="/{{ l_video.Choose_video }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="description-container">
+        <div>
+            <h1>{{l_video.Video_name}}</h1>
+            <p style="overflow-wrap: break-word;
+        ">{{l_video.Video_discription}}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
